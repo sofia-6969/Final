@@ -21,7 +21,7 @@ public class Pizza extends Producto {
         return ingredientesRaros;
     }
     // Metodo adicional (opcional)
-    //public String getDescripcionRidicula() {
-    //    return "¡Pizza " + getNombre() + " con ingredientes 'secretos' para iluminatis!";
-    //}
+    public String getDescripcionRidicula() {
+        return "¡Pizza " + getNombre() + " con ingredientes 'secretos' para iluminatis!";
+    }
 }

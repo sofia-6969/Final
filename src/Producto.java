@@ -1,5 +1,5 @@
 public abstract class Producto {
-    // encapculados (private)
+    // Atributos comunes a todas las clases hijas encapculados (private)
     private String nombre;
     private double precioBase;
 
