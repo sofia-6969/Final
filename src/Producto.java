@@ -6,14 +6,19 @@ public abstract class Producto {
         this.nombre = nombre;
         this.precioBase = precioBase;
     }
+
+    // Método abstracto (todas las clases hijas deben implementarlo)
     public abstract double calcularPrecio();
 
+    //Getters y Setters encapsulamiento
     public String getNombre() {
         return nombre;
     }
     public double getPrecioBase() {
         return precioBase;
     }
+
+    // Setters para aplicar descuentos o cambios de precio
     public void setPrecioBase(double precioBase) {
         this.precioBase = precioBase;
     }
