@@ -4,6 +4,7 @@ public class Pizza extends Producto {
     //Atributo extra (encapsulamiento)
     private String[] ingredientesRaros;
 
+    // este es el constructor
     public Pizza(String nombre, double precioBase, String[] ingredientesRaros) {
         super(nombre, precioBase); // Llama al constructor de la clase padre Producto
         this.ingredientesRaros = ingredientesRaros;

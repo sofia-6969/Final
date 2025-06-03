@@ -1,7 +1,9 @@
 public abstract class Producto {
+    // encapculados (private)
     private String nombre;
     private double precioBase;
 
+    //este es el constructor
     public Producto(String nombre, double precioBase){
         this.nombre = nombre;
         this.precioBase = precioBase;
