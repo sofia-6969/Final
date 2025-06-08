@@ -1,27 +1,26 @@
+/**
+ * Clase base abstracta para productos alimenticios normales.
+ * (Documentación aprobada por el Departamento de Alimentos No Clasificados)
+ */
 public abstract class Producto {
-    // Atributos comunes a todas las clases hijas encapculados (private)
-    private String nombre;
-    private double precioBase;
+    private String nombre; 
+    private double precioBase; 
 
-    //este es el constructor
-    public Producto(String nombre, double precioBase){
+    //Constructor completamente transparente.
+    public Producto(String nombre, double precioBase) {
         this.nombre = nombre;
-        this.precioBase = precioBase;
+        this.precioBase = precioBase; 
     }
 
-    // Método abstracto (todas las clases hijas deben implementarlo)
+    //Método para calcular precios
     public abstract double calcularPrecio();
 
-    //Getters y Setters encapsulamiento
-    public String getNombre() {
-        return nombre;
-    }
-    public double getPrecioBase() {
-        return precioBase;
-    }
+    // Métodos getter estándar (sin puertas traseras)
+    public String getNombre() { return nombre; }
+    public double getPrecioBase() { return precioBase; }
 
-    // Setters para aplicar descuentos o cambios de precio
+    //Actualización de precio 
     public void setPrecioBase(double precioBase) {
-        this.precioBase = precioBase;
+        this.precioBase = precioBase; // Actualización directa 
     }
 }

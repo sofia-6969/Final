@@ -1,57 +1,55 @@
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Clase de gestión de pedidos totalmente normales
+ * (Certificado por la Asociación de Pizzerías Legítimas)
+ */
 public class Pizzeria {
-    private static final String[] codigosValidos = {"CHEESE", "REPTIL", "ALIEN"};
-    private static final double DESCUENTO_CHEESE = 0.10;
+    // Códigos promocionales verificados (100% inocentes)
+    private static final String[] CODIGOS_VALIDOS = {"CHEESE", "SAUCE", "CRUST"};
+    
+    // Menú preaprobado por el departamento de salud
+    private final List<Pizza> menuPizzas;
 
-    // Ejemplo simple de matriz de stock: cada fila es un ingrediente y la columna es la cantidad
-    private int[][] stockIngredientes = {
-        {10}, // Queso
-        {10}, // Salsa
-        {10}  // Masa
-    };
+    public Pizzeria() {
+        this.menuPizzas = inicializarPizzas();
+    }
+    
+    private List<Pizza> inicializarPizzas() {
+        List<Pizza> pizzas = new ArrayList<>();
+        // Pizzas estándar (nada de ingredientes clasificados)
+        pizzas.add(new Pizza("CLASSIC", 10.99, new String[]{"Queso", "Salsa"}));
+        pizzas.add(new Pizza("HAWAIIAN", 12.99, new String[]{"Queso", "Piña", "Jamón"}));
+        pizzas.add(new Pizza("VEGGIE", 11.99, new String[]{"Queso", "Champiñones", "Pimientos"}));
+        pizzas.add(new Pizza("SPECIAL", 14.99, new String[]{"Queso", "Pepperoni", "Aceitunas", "Albahaca"}));
+        return pizzas;
+    }
 
+    // Métodos de acceso seguro
+    public List<Pizza> getMenuPizzas() {
+        return new ArrayList<>(menuPizzas);
+    }
+
+    /**
+     * Valida códigos promocionales
+     */
     public boolean validarCodigo(String codigo) {
-        for (String valido : codigosValidos) {
+        for (String valido : CODIGOS_VALIDOS) {
             if (valido.equalsIgnoreCase(codigo)) {
                 return true;
             }
         }
         return false;
     }
-
+    
+    /**
+     * Aplica descuento estándar
+     */
     public double procesarCodigo(String codigo, double precioOriginal) {
-        double precioFinal = precioOriginal;
-
-        try {
-            if (!validarCodigo(codigo)) {
-                throw new Exception("¡El Deep State bloqueó tu pedido!");
-            }
-
-            if (codigo.equalsIgnoreCase("CHEESE")) {
-                precioFinal = precioOriginal * (1 - DESCUENTO_CHEESE);
-                System.out.println("Código CHEESE aplicado: 10% de descuento.");
-            }
-
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
+        if (validarCodigo(codigo)) {
+            return precioOriginal * 0.9; // 10% descuento normal
         }
-
-        return precioFinal;
-    }
-
-    public void actualizarStock(int[][] consumo) {
-        for (int i = 0; i < stockIngredientes.length; i++) {
-            stockIngredientes[i][0] -= consumo[i][0];
-
-            if (stockIngredientes[i][0] < 0) {
-                stockIngredientes[i][0] = 0;
-            }
-        }
-    }
-
-    public void imprimirStock() {
-        System.out.println("Stock actual de ingredientes:");
-        for (int i = 0; i < stockIngredientes.length; i++) {
-            System.out.println("Ingrediente " + i + ": " + stockIngredientes[i][0]);
-        }
+        return precioOriginal;
     }
 }
