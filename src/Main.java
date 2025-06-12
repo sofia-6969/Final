@@ -57,12 +57,14 @@ public class Main {
     }
 
     private static int mostrarMenuPrincipal() {
-        System.out.println("\n--- MENÚ PRINCIPAL ---");
-        System.out.println("1. 🍕 Realizar pedido");
-        System.out.println("2. 🕵️ [Área restringida]");
-        System.out.println("3. 🚪 Salir");
-        System.out.print("Seleccione una opción (1-3): ");
-        return scanner.nextInt();
+    System.out.println("\n--- MENÚ PRINCIPAL ---");
+    System.out.println("1. 🍕 Realizar pedido");
+    System.out.println("2. 🕵️ [Área restringida]");
+    System.out.println("3. 🚪 Salir");
+    System.out.print("Seleccione una opción (1-3): ");
+    int opcion = scanner.nextInt();
+    scanner.nextLine(); // <-- Agrega esta línea para limpiar el buffer
+    return opcion;
     }
 
     private static void realizarPedido() {
@@ -82,11 +84,21 @@ public class Main {
         String codigoUsado = null;
         
         // Opción de bebida
-        System.out.print("\n¿Desea agregar la Bebida Especial? (s/n): ");
-        if (scanner.nextLine().equalsIgnoreCase("s")) {
+        boolean respuestaValida = false;
+        while (!respuestaValida) {
+            System.out.print("\n¿Desea agregar la Bebida Especial? (s/n): ");
+            String respuesta = scanner.nextLine().trim().toLowerCase();
+    
+        if (respuesta.equals("s")) {
             Bebida bebida = new Bebida("AguaPremium", 3.50, true);
             subtotal += bebida.calcularPrecio();
             conBebida = true;
+            respuestaValida = true;
+        } else if (respuesta.equals("n")) {
+        respuestaValida = true;
+        } else {
+            System.out.println("\n¡SEÑAL NO RECONOCIDA! Solo responda 's' o 'n' (las demás teclas están siendo monitoreadas).");
+        }
         }
         
         // Código promocional
@@ -112,9 +124,9 @@ public class Main {
                 if (eleccion >= 1 && eleccion <= pizzas.size()) {
                     return pizzas.get(eleccion-1);
                 }
-                System.out.println("¡Opción inválida! Intente nuevamente");
+                System.out.println("Opción fuera del rango *aprobado por los Illuminati*.");
             } catch (InputMismatchException e) {
-                System.out.println("¡Debe ingresar un número!");
+                System.out.println("Solo se aceptan números (según el *Protocolo Illuminati-Pizza 13*).");
                 scanner.nextLine();
             }
         }
