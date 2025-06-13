@@ -32,7 +32,7 @@ Final/
 ```
 
 # Diagrama UML
-![alt text](../OneDrive/Imágenes/Escritorio/Final/UML.jpg)
+![Diagrama UML del proyecto](UML.png)
 
 # Clases Principales
 
