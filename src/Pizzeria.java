@@ -22,7 +22,7 @@ public class Pizzeria {
         pizzas.add(new Pizza("CLASSIC", 10.99, new String[]{"Queso", "Salsa"}));
         pizzas.add(new Pizza("HAWAIIAN", 12.99, new String[]{"Queso", "Piña", "Jamón"}));
         pizzas.add(new Pizza("VEGGIE", 11.99, new String[]{"Queso", "Champiñones", "Pimientos"}));
-        pizzas.add(new Pizza("SPECIAL", 14.99, new String[]{"Queso", "Pepperoni", "Aceitunas", "Albahaca"}));
+        pizzas.add(new Pizza("SPECIAL", 14.99, new String[]{"Queso", "Pepperoni", "Aceitunas", "Albahaca", "Caviar Illuminati"}));
         return pizzas;
     }
 

@@ -18,12 +18,4 @@ public class Pizza extends Producto {
                 getPrecioBase() * 1.21 : // Aumenta el precio un 21%
                 getPrecioBase(); // Mantiene el precio base
     }
-    /**
-    * Getter de seguridad que devuelve COPIA de los ingredientes
-    * (No queremos que nadie modifique nuestros ingredientes secretos... digo, especiales)
-    */
-    public String[] getIngredientesRaros() {
-        System.out.println("(¡Generando copia de seguridad de los ingredientes!)");
-        return ingredientesRaros.clone();//copia de seguridad (nunca se sabe)
-    }
 }
